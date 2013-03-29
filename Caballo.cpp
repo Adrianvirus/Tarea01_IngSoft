@@ -2,13 +2,13 @@
 #include<stdio.h>
 #include <iostream>
 
-#define MAX 7
+#define MAX 9
 
 using namespace std;
 
 void Llenar(int a[][MAX],int n, int m);
 void Mostrar(int a[][MAX],int n,int m);
-void caballo(int x,int y);
+void Caballo (int a[][MAX], int n, int m, int *i, int *j, int *k);
 
 int main()
 {
@@ -61,5 +61,103 @@ void Mostrar(int a[][MAX],int n,int m)
                       }
                       cout<<endl<<endl;
      }
-         
+}
+
+void Caballo (int a[][MAX], int n, int m, int *i, int *j, int *k)
+{
+     int fil;
+     int col;
+     fil = *i+2; //Mov 1
+     col = *j+1;
+     if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+     {
+              a[fil][col]=*k;
+              *k=*k+1;
+              *i=fil;
+              *j=col;
+     }  
+     else
+     {
+         fil = *i+1;  //Mov 2
+         col = *j+2;
+         if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+         {
+                  a[fil][col]=*k;
+                  *k=*k+1;
+                  *i=fil;
+                  *j=col;
+         }
+         else
+         {
+             fil = *i-1; //Mov 3
+             col = *j+2; 
+             if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+             {
+                      a[fil][col]=*k;
+                      *k=*k+1;
+                      *i=fil;
+                      *j=col;
+             }
+             else
+             {
+                 fil = *i-2; //Mov 4
+                 col = *j+1;
+                 if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+                 {
+                          a[fil][col]=*k;
+                          *k=*k+1;
+                          *i=fil;
+                          *j=col;
+                 }
+                 else
+                 {
+                     fil = *i-2; // Mov 5
+                     col = *j-1;
+                     if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+                     {
+                              a[fil][col]=*k;
+                              *k=*k+1;
+                              *i=fil;
+                              *j=col;
+                     }
+                     else
+                     {
+                         fil = *i-1; // Mov 6
+                         col = *j-2;
+                         if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+                         {
+                                  a[fil][col]=*k;
+                                  *k=*k+1;
+                                  *i=fil;
+                                  *j=col;
+                         }
+                         else
+                         {
+                             fil = *i+1;  //Mov 7
+                             col = *j-2;
+                             if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+                             {
+                                      a[fil][col]=*k;
+                                      *k=*k+1;
+                                      *i=fil;
+                                      *j=col;
+                             }
+                             else
+                             {
+                                 fil = *i+2;
+                                 col = *j-1;
+                                 if(fil>0 && fil<9 && col>0 && col<9 && a[fil][col]==0)
+                                 {
+                                          a[fil][col]=*k;
+                                          *k=*k+1;
+                                          *i=fil;
+                                          *j=col;
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+         }
+     } 
 }
